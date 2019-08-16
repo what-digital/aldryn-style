@@ -2,6 +2,7 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
+import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
@@ -15,7 +16,7 @@ class Migration(migrations.Migration):
             name='Style',
             fields=[
                 ('label', models.CharField(default=b'', help_text='Optional label for this style plugin.', max_length=128, verbose_name='label', blank=True)),
-                ('cmsplugin_ptr', models.OneToOneField(parent_link=True, related_name='+', primary_key=True, serialize=False, to='cms.CMSPlugin')),
+                ('cmsplugin_ptr', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, parent_link=True, related_name='+', primary_key=True, serialize=False, to='cms.CMSPlugin')),
                 ('class_name', models.CharField(default=b'info', max_length=50, verbose_name='class name', blank=True, choices=[(b'info', b'info'), (b'new', b'new'), (b'hint', b'hint')])),
                 ('id_name', models.CharField(default=b'', max_length=50, verbose_name='id name', blank=True)),
                 ('tag_type', models.CharField(default=b'div', max_length=50, verbose_name='tag Type', choices=[(b'div', 'div'), (b'article', 'article'), (b'section', 'section'), (b'span', 'inline')])),

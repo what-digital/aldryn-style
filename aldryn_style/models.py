@@ -63,7 +63,7 @@ def get_html_tag_types():
             'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
             'header', 'footer',
         ]
-
+    print(tuple([(tag, tag) for tag in tag_types]))
     return tuple([(tag, tag) for tag in tag_types])
 
 
@@ -79,7 +79,7 @@ class Style(CMSPlugin):
         _('label'), max_length=128, default='', blank=True,
         help_text=_('Optional label for this style plugin.'))
     cmsplugin_ptr = models.OneToOneField(
-        CMSPlugin, related_name='+', parent_link=True)
+        CMSPlugin, related_name='+', parent_link=True, on_delete=models.CASCADE)
     class_name = models.CharField(
         _('class name'), choices=CLASS_NAMES, default=CLASS_NAMES[0][0],
         max_length=50, blank=True)
