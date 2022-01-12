@@ -9,9 +9,8 @@ import warnings
 from django.conf import settings
 from django.core.exceptions import ValidationError
 from django.db import models
-from django.utils.encoding import python_2_unicode_compatible
 from django.utils.translation import ugettext_lazy as _
-from django.utils.six import string_types
+from six import string_types
 
 from cms.models import CMSPlugin
 
@@ -66,7 +65,6 @@ def get_html_tag_types():
     return tuple([(tag, tag) for tag in tag_types])
 
 
-@python_2_unicode_compatible
 class Style(CMSPlugin):
     """
     A CSS Style Plugin

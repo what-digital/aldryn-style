@@ -50,5 +50,5 @@ class Form(forms.BaseForm):
         settings['ALDRYN_STYLE_ALLOWED_TAGS'] = [
             (tag_type, tag_type) for tag_type in set(
                 filter(bool, map(
-                    lambda x: x.strip(), data['tag_types'].split(','))))]
+                    lambda x: x.strip(), data.get('tag_types').split(',') if data.get('tag_types') else [])))]
         return settings
